@@ -1,14 +1,15 @@
 import { createDB } from '../lib/db'
 import { MessagesList } from './MessagesList'
 
-async function getMessages() {
+async function getProducts() {
   const db = createDB()
-  const messages = await db.selectFrom('messages').select('content').execute()
-  return messages
+
+  const products = await db.selectFrom('products').selectAll().execute()
+  return products
 }
 
 export async function StaticMessages() {
-  const messages = await getMessages()
+  const products = await getProducts()
 
-  return <MessagesList messages={messages} />
+  return <MessagesList messages={products} />
 }
