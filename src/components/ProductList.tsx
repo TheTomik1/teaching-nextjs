@@ -41,12 +41,20 @@ function Product(props: ProductProps) {
         width={256}
         height={256}
       />
-      <Link
-        href={`/product/${props.id}`}
-        className="bg-green-500 p-4 rounded-xl hover:bg-green-700 transition-transform"
-      >
-        Details
-      </Link>
+      <div className="space-x-4">
+        <Link
+          href={`/product/${props.id}`}
+          className="bg-green-500 p-4 rounded-xl hover:bg-green-700 transition-transform"
+        >
+          Details
+        </Link>
+        <Link
+          href={`/product-edit/${props.id}`}
+          className="bg-blue-500 p-4 rounded-xl hover:bg-blue-700 transition-transform"
+        >
+          Edit
+        </Link>
+      </div>
     </div>
   )
 }
