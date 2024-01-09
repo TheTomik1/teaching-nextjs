@@ -1,5 +1,6 @@
 ## Getting Started
 
+<<<<<<< HEAD
 ### Minimal setup
 ```bash
 npm install
@@ -10,6 +11,8 @@ npm run dev
 
 ### Commands
 
+=======
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
 Install node modules
 ```bash
 npm install
@@ -24,7 +27,11 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
+<<<<<<< HEAD
 #### Database management
+=======
+### Database management
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
 
 SQLite database resides in [`data/app.db`](data/) file.
 
@@ -42,8 +49,11 @@ Generate DB typescript definitions models for Kysely query builder
 ```bash
 npm run db:codegen:dev
 ```
+<<<<<<< HEAD
 
 Seed database with test data
 ```bash
 npm run db:seed:dev
 ```
+=======
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d

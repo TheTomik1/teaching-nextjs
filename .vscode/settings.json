@@ -20,10 +20,18 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
+<<<<<<< HEAD
             "database": "${workspaceFolder:teaching-nextjs-master}/data/app.db",
             "name": "local"
         }
     ],
     "editor.tabSize": 2,
     "files.eol": "\n"
+=======
+            "name": "Local",
+            "database": "data/app.db"
+        }
+    ],
+    "editor.tabSize": 2
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
 }

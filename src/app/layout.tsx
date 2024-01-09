@@ -2,8 +2,11 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
+<<<<<<< HEAD
 import Link from 'next/link'
 
+=======
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -14,6 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <nav className="flex items-center justify-between flex-wrap bg-zinc-800 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <span className="font-semibold text-2xl tracking-tight">Online shop</span>
@@ -32,6 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
       </nav>
+=======
+>>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
       <body className={inter.className}>{children}</body>
     </html>
   )
