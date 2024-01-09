@@ -10,12 +10,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-<<<<<<< HEAD
 				"github.copilot",
 				"ms-vsliveshare.vsliveshare"
-=======
-				"github.copilot"
->>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
 			],
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "bash"

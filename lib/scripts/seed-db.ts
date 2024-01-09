@@ -8,7 +8,6 @@ async function seedDB() {
 
   await db.deleteFrom('productsReviews').execute()
   await db.deleteFrom('products').execute()
-<<<<<<< HEAD
   await db.deleteFrom('productsPhotos').execute()
 
   const products = []
@@ -62,33 +61,6 @@ async function seedDB() {
 
   await db.insertInto('productsPhotos').values(images).execute()
 
-=======
-
-  let newData = []
-
-  for (let i = 0; i < 100; i++) {
-    newData.push({
-      name: faker.commerce.productName(),
-      description: faker.commerce.productDescription(),
-      price: faker.number.int(1000),
-    })
-  }
-
-  const createdProducts = await db.insertInto('products').values(newData).returning('id').execute()
-  for (const createdProduct of createdProducts) {
-    await db
-      .insertInto('productsReviews')
-      .values([
-        {
-          productId: createdProduct.id,
-          rating: faker.number.int(5),
-          content: faker.lorem.paragraph(),
-        },
-      ])
-      .execute()
-  }
-
->>>>>>> b204ba936b99884518cb914c884327e7a3074d0d
   console.log('Done')
 }
 
