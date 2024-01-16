@@ -14,24 +14,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <nav className="flex items-center justify-between flex-wrap bg-zinc-800 p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="font-semibold text-2xl tracking-tight">Online shop</span>
-        </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
-            <Link href="." className="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-400 hover:text-white mr-4">
-              Home
-            </Link>
-            <Link
-              href="/product_new"
-              className="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-400 hover:text-white mr-4"
-            >
-              Create
-            </Link>
-          </div>
-        </div>
-      </nav>
       <body className={inter.className}>{children}</body>
     </html>
   )

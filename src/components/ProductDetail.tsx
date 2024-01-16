@@ -5,6 +5,7 @@ import CreateProductReview from './CreateProductReview'
 import { createDB } from '../lib/db'
 
 import notFoundImage from '../../public/Image_not_available.png'
+import { ProductReview } from './ProductReview'
 
 async function getProductDetail(id: number) {
   const db = createDB()
@@ -58,12 +59,14 @@ export async function ProductDetail({ id }: ProductDetailProps) {
       </div>
       <div>
         {reviews.map((pr) => (
-          <div
-            className="bg-gray-300 p-4 rounded-xl mt-4 cursor-pointer hover:scale-105 transition-transform"
+          <ProductReview
+            id={pr.id}
             key={pr.id}
-          >
-            {pr.username} has commented "{pr.content}" with {pr.rating}/5 rating.
-          </div>
+            productId={product.id}
+            rating={pr.rating}
+            content={pr.content}
+            username={pr.username}
+          />
         ))}
       </div>
       <CreateProductReview productId={product.id} />
