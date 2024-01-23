@@ -11,12 +11,6 @@ export interface Products {
   price: number;
 }
 
-export interface ProductsPhotos {
-  id: Generated<number | null>;
-  productId: number | null;
-  url: string | null;
-}
-
 export interface ProductsReviews {
   id: Generated<number>;
   productId: number;
@@ -27,6 +21,5 @@ export interface ProductsReviews {
 
 export interface DB {
   products: Products;
-  productsPhotos: ProductsPhotos;
   productsReviews: ProductsReviews;
 }
