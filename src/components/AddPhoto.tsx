@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form'
 
 import { addPhoto } from '../app/actions/add-photo'
 
-type AddImageProps = {
+type AddPhotoProps = {
   productId: number
   url: string
 }
 
-export function AddImage({ productId }: AddImageProps) {
-  const { register, handleSubmit } = useForm<AddImageProps>()
+export function AddPhoto({ productId }: { productId: number }) {
+  const { register, handleSubmit } = useForm<AddPhotoProps>()
 
   const onSubmit = handleSubmit((data) => {
     addPhoto({ productId: productId, url: data.url })
@@ -35,4 +35,4 @@ export function AddImage({ productId }: AddImageProps) {
   )
 }
 
-export default AddImage
+export default AddPhoto

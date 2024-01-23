@@ -3,17 +3,17 @@
 import { revalidatePath } from 'next/cache'
 import { createDB } from '../../lib/db'
 
-type DeleteImageParams = {
+type DeletePhotoParams = {
   id: number
   productId: number
 }
 
-export async function deleteImage(image: DeleteImageParams) {
+export async function deletePhoto(photo: DeletePhotoParams) {
   const db = createDB()
 
-  console.log(image)
+  console.log(photo)
 
-  await db.deleteFrom('productsPhotos').where('id', '=', image.id).execute()
+  await db.deleteFrom('productsPhotos').where('id', '=', photo.id).execute()
 
-  revalidatePath(`/product-edit/${image.productId}`)
+  revalidatePath(`/product-edit/${photo.productId}`)
 }
