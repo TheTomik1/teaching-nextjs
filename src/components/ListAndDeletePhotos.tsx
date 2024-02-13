@@ -2,9 +2,10 @@
 
 import { deletePhoto } from '../app/actions/delete-photo'
 import AddImage from './AddPhoto'
+import { Button } from './ui/Button'
 
 type Props = {
-  productId: number,
+  productId: number
   photoDetails: {
     id: number
     productId: number
@@ -25,14 +26,15 @@ export function ListAndDeletePhotos({ productId, photoDetails }: Props) {
           {photoDetails.map((image, index) => (
             <div key={index}>
               <img src={image.url} className="rounded-xl m-4 shadow-lg w-96" />
-              <button
-                onClick={() => {
-                  deletePhoto({ id: image.id, productId: image.productId })
-                }}
-                className="bg-red-600 ml-4 p-4 rounded-xl text-white hover:scale-105 transition-transform"
-              >
-                Delete image
-              </button>
+              <div className="ml-4">
+                <Button
+                  children={'Delete image'}
+                  className={'btn btn-error p-4 hover:scale-105 transition-transform'}
+                  onClick={() => {
+                    deletePhoto({ id: image.id, productId: image.productId })
+                  }}
+                ></Button>
+              </div>
             </div>
           ))}
           <AddImage productId={productId} />

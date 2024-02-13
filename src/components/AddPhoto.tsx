@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form'
 
 import { addPhoto } from '../app/actions/add-photo'
+import { Button } from './ui/Button'
 
 type AddPhotoProps = {
   productId: number

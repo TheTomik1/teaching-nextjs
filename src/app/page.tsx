@@ -10,7 +10,6 @@ export default function Home({ searchParams }: Props) {
   if (pageId == null || pageId === '') {
     return (
       <main className="flex min-h-screen flex-col items-center p-24">
-        <div>Products List:</div>
         <ProductList pageId={1} />
       </main>
     )
@@ -22,7 +21,6 @@ export default function Home({ searchParams }: Props) {
 
     return (
       <main className="flex min-h-screen flex-col items-center p-24">
-        <div>Products List:</div>
         <ProductList pageId={parseInt(pageId)} />
       </main>
     )

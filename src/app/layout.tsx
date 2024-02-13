@@ -14,7 +14,38 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div>
+          <div className="navbar bg-zinc-400">
+            <div className="flex-1">
+              <a className="btn btn-ghost text-xl" href="/">
+                Online Shop
+              </a>
+            </div>
+            <div className="flex-none">
+              <ul className="menu menu-horizontal px-1">
+                <li>
+                  <a>Link</a>
+                </li>
+                <li>
+                  <details>
+                    <summary>Parent</summary>
+                    <ul className="p-2 bg-zinc-400 rounded-t-none">
+                      <li>
+                        <a>Link 1</a>
+                      </li>
+                      <li>
+                        <a>Link 2</a>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>{children}</div>
+      </body>
     </html>
   )
 }

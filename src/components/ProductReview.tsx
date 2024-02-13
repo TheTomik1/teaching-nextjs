@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import EditReview from './EditReview'
+import { Button } from './ui/Button'
 
 type ProductReviewProps = {
   id: number
@@ -22,25 +23,24 @@ export function ProductReview(props: ProductReviewProps) {
       {props.username} has commented "{props.content}" with {props.rating}/5 rating.
       <br />
       {editOpen ? (
-        <button
-          className="bg-green-500 rounded-xl p-2 text-white"
+        <Button
+          children={'Edit'}
+          className={'btn btn-info p-4 hover:scale-105 transition-transform'}
           onClick={() => {
             setEditOpen(!editOpen)
           }}
-        >
-          Edit
-        </button>
+        ></Button>
       ) : (
         <>
           <EditReview id={props.id} rating={props.rating} content={props.content} username={props.username} />
-          <button
-            className="bg-red-500 rounded-xl p-2 text-white"
+
+          <Button
+            children={'Create'}
+            className={'btn btn-success p-4 hover:scale-105 transition-transform'}
             onClick={() => {
               setEditOpen(!editOpen)
             }}
-          >
-            Cancel
-          </button>
+          ></Button>
         </>
       )}
     </div>
