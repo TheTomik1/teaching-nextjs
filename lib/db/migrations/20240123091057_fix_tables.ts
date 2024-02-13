@@ -26,7 +26,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
     id integer primary key autoincrement,
     product_id integer not null,
     url text not null,
-    foreign key (product_id) references products(id) not null
+    foreign key (product_id) references products(id)
   )
   `.execute(db)
 }
