@@ -12,7 +12,11 @@ export interface Products {
 }
 
 export interface ProductsPhotos {
+<<<<<<< HEAD
   id: Generated<number | null>;
+=======
+  id: Generated<number>;
+>>>>>>> f4f4cbf7f45952da4f1eab21efc6908f03b62473
   productId: number;
   url: string;
 }
