@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation'
 
 import notFoundImage from '../../public/Image_not_available.png'
 
+import { AddToCardButton } from './AddToCardButton'
+
 async function getProducts(page: number) {
   const db = createDB()
 
@@ -54,6 +56,7 @@ function Product(props: ProductProps) {
         >
           Edit
         </Link>
+        <AddToCardButton id={props.id} />
       </div>
     </div>
   )
@@ -71,7 +74,11 @@ export async function ProductList(props: PageProps) {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4">
+      <Link href="/cart" className="bg-green-500 p-4 text-white rounded-xl">
+        Cart
+      </Link>
+
+      <div className="grid grid-cols-3 gap-4 mt-12">
         {products.map((p) => (
           <Product key={p.id} id={p.id} name={p.name} description={p.description} url={p.url} />
         ))}
