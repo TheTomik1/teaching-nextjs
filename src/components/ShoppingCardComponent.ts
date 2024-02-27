@@ -2,7 +2,7 @@ import { createContext } from 'react'
 
 type ShoppingCard = {
   items: { id: number; count: number }[]
-  addItem: (item: object) => void
+  addItem: (items: { id: number; name: string; price: number }) => void
   removeItem: (id: number) => void
 }
 

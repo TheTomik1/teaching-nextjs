@@ -8,9 +8,9 @@ type Props = {
 }
 
 export function ShoppingCardProvider({ children }: Props) {
-  const [items, setItems] = useState<object[]>([])
+  const [items, setItems] = useState<{ id: number; name: string; price: number; count: number }[]>([])
 
-  const addItem = (item: object) => {
+  const addItem = (item: { id: number; name: string; price: number }) => {
     const exists = items.some((i) => i.id === item.id)
 
     if (!exists) {

@@ -1,6 +1,5 @@
 'use server'
 
-import { redirect } from 'next/navigation'
 import { createDB } from '../../lib/db'
 import { revalidatePath } from 'next/cache'
 
