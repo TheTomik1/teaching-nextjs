@@ -5,6 +5,8 @@ import { ShoppingCardContext } from '../../components/ShoppingCardComponent'
 import CartItem from '../../components/CartItem'
 import { productDetails } from '../actions/product-details'
 
+import { FaCartPlus } from 'react-icons/fa6'
+
 type ItemProps = {
   id: number
   count: number
@@ -54,19 +56,15 @@ export default function Card() {
     )
   }
 
-  if (cartState.length === 0) {
-    return (
-      <div className="flex min-h-screen flex-col items-center p-24">
-        <div>
-          <h1 className="text-2xl font-bold">Your cart is empty.</h1>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="flex min-h-screen flex-col items-center p-24">
+    <div className="items-center p-24">
       <div>
+        {cartState.length === 0 && (
+          <div className="flex justify-center p-4 border-gray-200">
+            <p className="text-lg font-semibold">No items in the cart :(</p>
+          </div>
+        )}
+
         {cartState.map((item) => (
           <CartItem
             key={item.id}
@@ -77,6 +75,17 @@ export default function Card() {
             imageUrl={item.imageUrl}
           />
         ))}
+      </div>
+      <div className="flex justify-end p-4 border-gray-200">
+        <button className="p-4 bg-green-500 rounded-xl text-white font-bold hover:bg-green-600 transition-transform">
+          <FaCartPlus className="inline-block mr-2 text-3xl" />
+          Checkout
+        </button>
+      </div>
+      <div className="flex justify-end p-4 border-t border-gray-200">
+        <p className="text-lg font-semibold">
+          Total: ${cartState.reduce((acc, item) => acc + item.price * item.count, 0)}
+        </p>
       </div>
     </div>
   )

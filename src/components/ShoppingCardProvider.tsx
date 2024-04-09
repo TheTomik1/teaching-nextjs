@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ShoppingCardContext } from './ShoppingCardComponent'
 
 type Props = {
@@ -8,13 +8,17 @@ type Props = {
 }
 
 export function ShoppingCardProvider({ children }: Props) {
-  const [items, setItems] = useState<{ id: number; name: string; price: number; count: number }[]>([])
+  const [items, setItems] = useState<{ id: number; name: string; price: number; count: number }[]>(() => {
+    const items = localStorage.getItem('items')
+    return items ? JSON.parse(items) : []
+  })
 
   const addItem = (item: { id: number; name: string; price: number }) => {
     const exists = items.some((i) => i.id === item.id)
 
     if (!exists) {
       setItems([...items, { ...item, count: 1 }])
+      localStorage.setItem('items', JSON.stringify([...items, { ...item, count: 1 }]))
       return
     } else {
       setItems(
@@ -24,6 +28,11 @@ export function ShoppingCardProvider({ children }: Props) {
           }
           return i
         })
+      )
+
+      localStorage.setItem(
+        'items',
+        JSON.stringify(items.map((i) => (i.id === item.id ? { ...i, count: i.count + 1 } : i)))
       )
     }
   }
@@ -36,9 +45,23 @@ export function ShoppingCardProvider({ children }: Props) {
       return i
     })
 
+    localStorage.setItem('items', JSON.stringify(reduceByOne))
+
     const filtered = reduceByOne.filter((i) => i.count > 0)
     setItems(filtered)
   }
 
-  return <ShoppingCardContext.Provider value={{ items, addItem, removeItem }}>{children}</ShoppingCardContext.Provider>
+  const deleteItem = (id: number) => {
+    const filtered = items.filter((i) => i.id !== id)
+
+    localStorage.setItem('items', JSON.stringify(filtered))
+
+    setItems(filtered)
+  }
+
+  return (
+    <ShoppingCardContext.Provider value={{ items, addItem, removeItem, deleteItem }}>
+      {children}
+    </ShoppingCardContext.Provider>
+  )
 }
