@@ -27,7 +27,15 @@ export async function up(db: Kysely<unknown>): Promise<void> {
     product_id integer not null,
     url text not null,
     foreign key (product_id) references products(id)
-  )
+  );
+  `.execute(db)
+
+  await sql`
+  CREATE TABLE orders (
+    id integer primary key autoincrement not null,
+    total_price real not null,
+    total_count integer not null
+  );
   `.execute(db)
 }
 

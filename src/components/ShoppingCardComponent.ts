@@ -5,6 +5,7 @@ type ShoppingCard = {
   addItem: (items: { id: number; name: string; price: number }) => void
   removeItem: (id: number) => void
   deleteItem: (id: number) => void
+  clearItems: () => void
 }
 
 export const ShoppingCardContext = createContext<ShoppingCard>({
@@ -12,4 +13,5 @@ export const ShoppingCardContext = createContext<ShoppingCard>({
   addItem: (items) => {},
   removeItem: (id) => {},
   deleteItem: (id) => {},
+  clearItems: () => {},
 })

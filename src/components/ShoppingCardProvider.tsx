@@ -59,8 +59,14 @@ export function ShoppingCardProvider({ children }: Props) {
     setItems(filtered)
   }
 
+  const clearItems = () => {
+    localStorage.setItem('items', JSON.stringify([]))
+
+    setItems([])
+  }
+
   return (
-    <ShoppingCardContext.Provider value={{ items, addItem, removeItem, deleteItem }}>
+    <ShoppingCardContext.Provider value={{ items, addItem, removeItem, deleteItem, clearItems }}>
       {children}
     </ShoppingCardContext.Provider>
   )

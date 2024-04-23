@@ -16,14 +16,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "sqltools.useNodeRuntime": true,
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "driver": "SQLite",
-            "database": "${workspaceFolder:teaching-nextjs-master}/data/app.db",
-            "name": "local"
-        }
-    ],
+    "sqltools.connections": [],
     "editor.tabSize": 2,
     "files.eol": "\n"
 }

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { ShoppingCardContext } from '../../components/ShoppingCardComponent'
 import CartItem from '../../components/CartItem'
 import { productDetails } from '../actions/product-details'
+import { createOrder } from '../actions/create-order'
 
 import { FaCartPlus } from 'react-icons/fa6'
 
@@ -16,10 +17,22 @@ type ItemProps = {
 }
 
 export default function Card() {
-  const { items } = useContext(ShoppingCardContext)
+  const { items, clearItems } = useContext(ShoppingCardContext)
 
   const [cartState, setCartState] = useState<ItemProps[]>([])
   const [loading, setLoading] = useState(true)
+
+  const totalPrice = cartState.reduce((acc, item) => acc + item.price * item.count, 0)
+  const totalCount = cartState.reduce((acc) => acc + 1, 0)
+
+  const onSubmit = async () => {
+    createOrder({
+      totalPrice: totalPrice,
+      totalCount: totalCount,
+    })
+
+    clearItems()
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -77,15 +90,16 @@ export default function Card() {
         ))}
       </div>
       <div className="flex justify-end p-4 border-gray-200">
-        <button className="p-4 bg-green-500 rounded-xl text-white font-bold hover:bg-green-600 transition-transform">
+        <button
+          onClick={onSubmit}
+          className="p-4 bg-green-500 rounded-xl text-white font-bold hover:bg-green-600 transition-transform"
+        >
           <FaCartPlus className="inline-block mr-2 text-3xl" />
           Checkout
         </button>
       </div>
       <div className="flex justify-end p-4 border-t border-gray-200">
-        <p className="text-lg font-semibold">
-          Total: ${cartState.reduce((acc, item) => acc + item.price * item.count, 0)}
-        </p>
+        <p className="text-lg font-semibold">Total: {totalPrice} €</p>
       </div>
     </div>
   )
