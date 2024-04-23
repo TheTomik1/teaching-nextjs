@@ -26,7 +26,7 @@ export default function Card() {
   const totalCount = cartState.reduce((acc) => acc + 1, 0)
 
   const onSubmit = async () => {
-    createOrder({
+    await createOrder({
       totalPrice: totalPrice,
       totalCount: totalCount,
     })
