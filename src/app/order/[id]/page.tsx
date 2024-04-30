@@ -1,10 +1,18 @@
 import { sql } from 'kysely'
-import { createDB } from '../../lib/db'
+import { createDB } from '../../../lib/db'
 
-export default async function OrdersList() {
+type OrderDetailPageProps = {
+  params: {
+    id: string
+  }
+}
+
+export default async function OrderDetails({ params }: OrderDetailPageProps) {
+  const orderId = parseInt(params.id)
+
   const db = createDB()
 
-  const orders = await db
+  const details = await db
     .selectFrom('orders')
     .leftJoin('ordersProducts', 'ordersProducts.orderId', 'orders.id')
     .groupBy(['orderId'])
@@ -13,18 +21,17 @@ export default async function OrdersList() {
       fn.sum('count').as('totalCount'),
       sql<number>`SUM(${ref('count')} * ${ref('price')})`.as('totalPrice'),
     ])
+    .where('orderId', '=', orderId)
     .execute()
 
   return (
     <main className="items-center p-24">
       <div>
-        <h1 className="text-3xl text-black mb-12">Product Order History</h1>
-        {orders.map((order) => (
+        {details.map((detail) => (
           <>
-            <p>Order ID: {order.orderId}</p>
-            <p>Total items:{String(order.totalCount)}</p>
-            <p>Total price: {`${order.totalPrice}`} €</p>
-            <div className="flex justify-end p-2 border-t border-gray-400" />
+            <h1>Order ID: {detail.orderId}</h1>
+            <h2>Price: {detail.totalPrice} €</h2>
+            <h3>Count: {String(detail.totalCount)}</h3>
           </>
         ))}
       </div>

@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 import { createDB } from '../../lib/db'
 import { revalidatePath } from 'next/cache'
+import { sql } from 'kysely'
 
 type ItemProps = {
   id: number
@@ -21,7 +22,7 @@ export async function createOrder(order: createOrderParams) {
 
   const orderData = await db
     .insertInto('orders')
-    .values({ totalCount: 1, totalPrice: 1 })
+    .expression(sql`default values`)
     .returningAll()
     .executeTakeFirstOrThrow()
 

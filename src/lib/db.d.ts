@@ -6,8 +6,6 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export interface Orders {
   id: Generated<number>;
-  totalPrice: number;
-  totalCount: number;
 }
 
 export interface OrdersProducts {

@@ -32,9 +32,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 
   await sql`
   CREATE TABLE orders (
-    id integer primary key autoincrement not null,
-    total_price real not null,
-    total_count integer not null
+    id integer primary key autoincrement not null
   );
   `.execute(db)
 
