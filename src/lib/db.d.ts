@@ -10,6 +10,13 @@ export interface Orders {
   totalCount: number;
 }
 
+export interface OrdersProducts {
+  orderId: number;
+  productId: number;
+  count: number;
+  price: number;
+}
+
 export interface Products {
   id: Generated<number>;
   name: string;
@@ -33,6 +40,7 @@ export interface ProductsReviews {
 
 export interface DB {
   orders: Orders;
+  ordersProducts: OrdersProducts;
   products: Products;
   productsPhotos: ProductsPhotos;
   productsReviews: ProductsReviews;

@@ -23,12 +23,10 @@ export default function Card() {
   const [loading, setLoading] = useState(true)
 
   const totalPrice = cartState.reduce((acc, item) => acc + item.price * item.count, 0)
-  const totalCount = cartState.reduce((acc) => acc + 1, 0)
 
   const onSubmit = async () => {
     await createOrder({
-      totalPrice: totalPrice,
-      totalCount: totalCount,
+      items: cartState,
     })
 
     clearItems()
